@@ -26,6 +26,7 @@ import * as Utils from './utils.js'
 import Clutter from 'gi://Clutter'
 import Gio from 'gi://Gio'
 import Shell from 'gi://Shell'
+import Meta from 'gi://Meta'
 import St from 'gi://St'
 import * as Main from 'resource:///org/gnome/shell/ui/main.js'
 import * as WindowManager from 'resource:///org/gnome/shell/ui/windowManager.js'
@@ -48,7 +49,7 @@ const T2 = 'numberOverlayTimeout'
 export const Overview = class {
   constructor(panelManager) {
     this._injectionManager = new InjectionManager()
-    this._numHotkeys = 10
+    this._numHotkeys = 18 //Gizzo: raised number of hotkeys
     this._panelManager = panelManager
   }
 
@@ -220,7 +221,7 @@ export const Overview = class {
       seenApps[appIcon.app] = (seenApps[appIcon.app] || 0) + 1
     })
 
-    this._showOverlay()
+    //Gizzo: lets not show overlay on hotkey activation
 
     if (appIndex < apps.length) {
       let appIcon = apps[appIndex]
@@ -345,7 +346,10 @@ export const Overview = class {
       prefixModifiers |= Clutter.ModifierType.MOD1_MASK
 
     if (bothNumKeys || numRowKeys) {
-      keys.push('app-hotkey-', 'app-shift-hotkey-', 'app-ctrl-hotkey-') // Regular numbers
+
+      //Gizzo: removed the num hot keys, so that there are 18 Function keys
+      keys.push('app-hotkey-')
+
     }
 
     if (bothNumKeys || shortcutNumKeys == 'NUM_KEYPAD') {

@@ -179,6 +179,23 @@ export const TaskbarAppIcon = GObject.registerClass(
 
       this._dtpIconContainer.add_child(this._iconContainer)
 
+      //Gizzo: added desature effect to icons
+      let found = false;
+      let actor = this._dtpIconContainer;
+      let effects = actor.get_effects();
+      for (let i = 0; i < effects.length; i++) {
+          let effect = effects[i];
+          if (effect instanceof Clutter.DesaturateEffect) {
+              found = true;
+          }
+      }
+      if (!found) {
+        this._dtpIconContainer.add_effect_with_name(
+          'desaturate',
+          new Clutter.DesaturateEffect({ factor: 1 }),
+        );
+      }
+
       if (appInfo.window) {
         let box = Utils.createBoxLayout()
 
@@ -834,6 +851,17 @@ export const TaskbarAppIcon = GObject.registerClass(
           ) +
           ';'
         inlineStyle += this._appicon_normalstyle
+
+        //Gizzo: removing added desature effect from icons
+        let actor = this._dtpIconContainer;
+        let effects = actor.get_effects();
+        for (let i = 0; i < effects.length; i++) {
+            let effect = effects[i];
+            if (effect instanceof Clutter.DesaturateEffect) {
+                actor.remove_effect(effect);
+            }
+        }
+
       }
 
       if (this._dotsContainer.get_style() != inlineStyle) {
@@ -1220,10 +1248,12 @@ export const TaskbarAppIcon = GObject.registerClass(
 
             case 'CYCLE':
               if (!Main.overview._shown) {
-                if (appHasFocus)
-                  cycleThroughWindows(this.app, false, false, monitor)
-                else {
-                  activateFirstWindow(this.app, monitor)
+                if (appHasFocus) {
+                  cycleThroughWindows(this.app, false, false, monitor);
+                  this._centerMouse();
+                } else {
+                  activateFirstWindow(this.app, monitor);
+                  this._centerMouse();
                 }
               } else this.app.activate()
               break
@@ -1235,12 +1265,17 @@ export const TaskbarAppIcon = GObject.registerClass(
                     recentlyClickedAppWindows[
                       recentlyClickedAppIndex % recentlyClickedAppWindows.length
                     ] == 'MINIMIZE')
-                )
-                  cycleThroughWindows(this.app, false, true, monitor)
+                ) {
+                  cycleThroughWindows(this.app, false, true, monitor);
+                  this._centerMouse();
+              }
                 else {
-                  activateFirstWindow(this.app, monitor)
+                  activateFirstWindow(this.app, monitor);
+                  this._centerMouse();
                 }
-              } else this.app.activate()
+              } else {
+                this.app.activate();
+              }
               break
             case 'TOGGLE-SHOWPREVIEW':
               if (!Main.overview._shown) {
@@ -1293,6 +1328,23 @@ export const TaskbarAppIcon = GObject.registerClass(
 
       global.display.emit('grab-op-begin', null, null)
       Main.overview.hide()
+    }
+
+    //Gizzo: center the mouse on the current window
+    _centerMouse() {
+      let [mouse_x, mouse_y, _] = global.get_pointer();
+      let rect = global.display.focus_window.get_buffer_rect();
+      if (mouse_x >= rect.x && mouse_x <= rect.x + rect.width && mouse_y >= rect.y && mouse_y <= rect.y + rect.height) {
+        return;
+      } else {
+        let seat = Clutter.get_default_backend().get_default_seat();
+        if (seat !== null && rect !== null) {
+            seat.warp_pointer(
+                rect.x + rect.width / 2,
+                rect.y + rect.height / 2,
+            );
+        }
+      }
     }
 
     _launchNewInstance(ctrlPressed) {
@@ -1402,6 +1454,26 @@ export const TaskbarAppIcon = GObject.registerClass(
       let n = this._getRunningIndicatorCount()
 
       if (!n) {
+
+        //Gizzo: also add desature on losing focus
+        if (!isFocused) {
+          let found = false;
+          let actor = this._dtpIconContainer;
+          let effects = actor.get_effects();
+          for (let i = 0; i < effects.length; i++) {
+              let effect = effects[i];
+              if (effect instanceof Clutter.DesaturateEffect) {
+                  found = true;
+              }
+          }
+          if (!found) {
+            this._dtpIconContainer.add_effect_with_name(
+              'desaturate',
+              new Clutter.DesaturateEffect({ factor: 1 }),
+            );
+          }
+        }
+
         return
       }
 
@@ -1659,7 +1731,48 @@ export const TaskbarAppIcon = GObject.registerClass(
       ]('notification-badge')
 
       if (shouldBeVisible && label !== this._numberOverlayLabel.get_text()) {
-        this._numberOverlayLabel.set_text(label.toString())
+
+        //Gizzo: manual hard labour override of labels
+        if (label == 1) {
+          this._numberOverlayLabel.set_text('w')
+        } else if (label == 2) {
+          this._numberOverlayLabel.set_text('e')
+        } else if (label == 3) {
+          this._numberOverlayLabel.set_text('r')
+        } else if (label == 4) {
+          this._numberOverlayLabel.set_text('t')
+        } else if (label == 5) {
+          this._numberOverlayLabel.set_text('s')
+        } else if (label == 6) {
+          this._numberOverlayLabel.set_text('d')
+        } else if (label == 7) {
+          this._numberOverlayLabel.set_text('f')
+        } else if (label == 8) {
+          this._numberOverlayLabel.set_text('g')
+        } else if (label == 9) {
+          this._numberOverlayLabel.set_text('c')
+        } else if (label == 0) {
+          this._numberOverlayLabel.set_text('v')
+        } else if (label == 11) {
+          this._numberOverlayLabel.set_text('q')
+        } else if (label == 12) {
+          this._numberOverlayLabel.set_text('w')
+        } else if (label == 13) {
+          this._numberOverlayLabel.set_text('e')
+        } else if (label == 14) {
+          this._numberOverlayLabel.set_text('a')
+        } else if (label == 15) {
+          this._numberOverlayLabel.set_text('s')
+        } else if (label == 16) {
+          this._numberOverlayLabel.set_text('d')
+        } else if (label == 17) {
+          this._numberOverlayLabel.set_text('z')
+        } else if (label == 18) {
+          this._numberOverlayLabel.set_text('x')
+        } else {
+          this._numberOverlayLabel.set_text(label.toString())
+        }
+
         this._updateNumberOverlay()
       }
 
@@ -1697,6 +1810,14 @@ export const TaskbarAppIcon = GObject.registerClass(
         font-size: ${fontSize}px;
         height: ${size}px;
       `
+
+      //Gizzo: change color of overlay font
+      if (this._getRunningIndicatorCount() > 0) {
+        style += "color: yellow";
+      } else {
+        style += "color: gray";
+      }
+
       this._numberOverlayLabel.set_style(style)
     }
 

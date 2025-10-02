@@ -1229,7 +1229,8 @@ export const Taskbar = class extends EventEmitter {
 
       let label = hotkeyAppNumbers[icon.app]
 
-      if (label <= 10) {
+      //Gizzo: raised number of hotkeys from 10 to 18
+      if (label <= 18) {
         icon.setHotkeysNumberOverlayLabel(label == 10 ? 0 : label)
       } else {
         // No overlay after 10
