@@ -1109,66 +1109,122 @@
       </description>
     </key>
     <key name="app-hotkey-2" type="as">
-      <default><![CDATA[['<Super>2']]]></default>
+      <default><![CDATA[['<Super>F2']]]></default>
       <summary>Keybinding to trigger 2nd dash app</summary>
       <description>
         Keybinding to either show or launch the 2nd application in the dash.
       </description>
     </key>
     <key name="app-hotkey-3" type="as">
-      <default><![CDATA[['<Super>3']]]></default>
+      <default><![CDATA[['<Super>F3']]]></default>
       <summary>Keybinding to trigger 3rd dash app</summary>
       <description>
         Keybinding to either show or launch the 3rd application in the dash.
       </description>
     </key>
     <key name="app-hotkey-4" type="as">
-      <default><![CDATA[['<Super>4']]]></default>
+      <default><![CDATA[['<Super>F4']]]></default>
       <summary>Keybinding to trigger 4th dash app</summary>
       <description>
         Keybinding to either show or launch the 4th application in the dash.
       </description>
     </key>
     <key name="app-hotkey-5" type="as">
-      <default><![CDATA[['<Super>5']]]></default>
+      <default><![CDATA[['<Super>F5']]]></default>
       <summary>Keybinding to trigger 5th dash app</summary>
       <description>
         Keybinding to either show or launch the 5th application in the dash.
       </description>
     </key>
     <key name="app-hotkey-6" type="as">
-      <default><![CDATA[['<Super>6']]]></default>
+      <default><![CDATA[['<Super>F6']]]></default>
       <summary>Keybinding to trigger 6th dash app</summary>
       <description>
         Keybinding to either show or launch the 6th application in the dash.
       </description>
     </key>
     <key name="app-hotkey-7" type="as">
-      <default><![CDATA[['<Super>7']]]></default>
+      <default><![CDATA[['<Super>F7']]]></default>
       <summary>Keybinding to trigger 7th dash app</summary>
       <description>
         Keybinding to either show or launch the 7th application in the dash.
       </description>
     </key>
     <key name="app-hotkey-8" type="as">
-      <default><![CDATA[['<Super>8']]]></default>
+      <default><![CDATA[['<Super>F8']]]></default>
       <summary>Keybinding to trigger 8th dash app</summary>
       <description>
         Keybinding to either show or launch the 8th application in the dash.
       </description>
     </key>
     <key name="app-hotkey-9" type="as">
-      <default><![CDATA[['<Super>9']]]></default>
+      <default><![CDATA[['<Super>F9']]]></default>
       <summary>Keybinding to trigger 9th dash app</summary>
       <description>
         Keybinding to either show or launch the 9th application in the dash.
       </description>
     </key>
     <key name="app-hotkey-10" type="as">
-      <default><![CDATA[['<Super>0']]]></default>
+      <default><![CDATA[['<Super>F10']]]></default>
       <summary>Keybinding to trigger 10th dash app</summary>
       <description>
         Keybinding to either show or launch the 10th application in the dash.
+      </description>
+    </key>
+    <key name="app-hotkey-11" type="as">
+      <default><![CDATA[['<Super>F11']]]></default>
+      <summary>Keybinding to trigger 11th dash app</summary>
+      <description>
+        Keybinding to either show or launch the 11th application in the dash.
+      </description>
+    </key>
+    <key name="app-hotkey-12" type="as">
+      <default><![CDATA[['<Super>F12']]]></default>
+      <summary>Keybinding to trigger 11th dash app</summary>
+      <description>
+        Keybinding to either show or launch the 12th application in the dash.
+      </description>
+    </key>
+    <key name="app-hotkey-13" type="as">
+      <default><![CDATA[['<Super>F13']]]></default>
+      <summary>Keybinding to trigger 13th dash app</summary>
+      <description>
+        Keybinding to either show or launch the 13th application in the dash.
+      </description>
+    </key>
+    <key name="app-hotkey-14" type="as">
+      <default><![CDATA[['<Super>F14']]]></default>
+      <summary>Keybinding to trigger 14th dash app</summary>
+      <description>
+        Keybinding to either show or launch the 14th application in the dash.
+      </description>
+    </key>
+    <key name="app-hotkey-15" type="as">
+      <default><![CDATA[['<Super>F15']]]></default>
+      <summary>Keybinding to trigger 15th dash app</summary>
+      <description>
+        Keybinding to either show or launch the 15th application in the dash.
+      </description>
+    </key>
+    <key name="app-hotkey-16" type="as">
+      <default><![CDATA[['<Super>F16']]]></default>
+      <summary>Keybinding to trigger 16th dash app</summary>
+      <description>
+        Keybinding to either show or launch the 16th application in the dash.
+      </description>
+    </key>
+        <key name="app-hotkey-17" type="as">
+      <default><![CDATA[['<Super>F17']]]></default>
+      <summary>Keybinding to trigger 17th dash app</summary>
+      <description>
+        Keybinding to either show or launch the 17th application in the dash.
+      </description>
+    </key>
+    <key name="app-hotkey-18" type="as">
+      <default><![CDATA[['<Super>F18']]]></default>
+      <summary>Keybinding to trigger 18th dash app</summary>
+      <description>
+        Keybinding to either show or launch the 18th application in the dash.
       </description>
     </key>
     <key name="app-ctrl-hotkey-kp-1" type="as">
